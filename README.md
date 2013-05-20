@@ -1,4 +1,4 @@
 league-parent
 =============
 
-Parent pom
+Parent pom for the league projects.

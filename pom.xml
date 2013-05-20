@@ -1,0 +1,117 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>com.africaapps</groupId>
+	<artifactId>league-parent</artifactId>
+	<name>league-parent</name>
+	<version>1.0.0</version>
+	<packaging>pom</packaging>
+
+	<properties>
+		<maven.compiler.source>1.7</maven.compiler.source>
+		<maven.compiler.target>1.7</maven.compiler.target>
+		<junit.version>4.8.1</junit.version>
+		<dbunit.version>2.2</dbunit.version>
+		<log4j.version>1.2.16</log4j.version>
+		<slf4j.version>1.6.4</slf4j.version>		
+		<c3p0.version>0.9.1.2</c3p0.version>
+    	<postgresql.driver.version>5.1.12</postgresql.driver.version>
+	    <spring.version>3.2.2.RELEASE</spring.version>
+	    <hibernate.version>4.2.0.Final</hibernate.version>
+	    <hibernate.annotations.version>3.4.0.GA</hibernate.annotations.version>
+	    <aspectj.version>1.6.9</aspectj.version>
+	    <hibernate.validator.version>4.1.0.Final</hibernate.validator.version>
+	    <javax.validation.version>1.0.0.GA</javax.validation.version>
+	</properties>
+
+	<distributionManagement>
+		<repository>
+			<id>releases</id>
+			<name>Internal Releases</name>
+			<url>http://localhost:8080/nexus/content/repositories/releases/</url>			
+		</repository>
+		<snapshotRepository>
+			<id>snapshots</id>
+			<name>Internal Snapshots</name>
+			<url>http://localhost:8080/nexus/content/repositories/snapshots/</url>
+		</snapshotRepository>
+	</distributionManagement>
+
+	<!-- 
+	<scm>
+		<connection>scm:svn:http://buildsrv:buildsrv@pnpcodesrv.pnpgroup.co.za/svn/java</connection>
+	</scm>
+	-->
+
+	<build>
+	
+	<pluginManagement>
+		<plugins>
+
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<configuration>
+					<source>${maven.compiler.source}</source>
+					<target>${maven.compiler.target}</target>
+					<excludes>
+					 <exclude>za/co/pnp/admin/infrastructure/ui/server/spring/**</exclude>
+					</excludes>
+				</configuration>
+			</plugin>
+
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-surefire-plugin</artifactId>
+				<configuration>
+					<disableXmlReport>false</disableXmlReport>
+					<excludes>
+						<exclude>**/**SomeTest.java</exclude>
+					</excludes>
+				</configuration>
+			</plugin>
+			
+			<plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-release-plugin</artifactId>
+        <version>2.0-beta-8</version>
+			</plugin>
+
+		</plugins>
+  </pluginManagement>
+	</build>	
+
+	<dependencies>
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<version>${junit.version}</version>
+			<scope>test</scope>
+		</dependency>
+
+		<dependency>
+			<groupId>org.dbunit</groupId>
+			<artifactId>dbunit</artifactId>
+			<version>${dbunit.version}</version>
+			<scope>test</scope>
+		</dependency>
+
+		<dependency>
+			<groupId>log4j</groupId>
+			<artifactId>log4j</artifactId>
+			<version>${log4j.version}</version>
+		</dependency>
+		
+		<dependency>
+			<groupId>org.slf4j</groupId>
+			<artifactId>slf4j-api</artifactId>
+			<version>${slf4j.version}</version>
+		</dependency>
+		
+		<dependency>
+			<groupId>org.slf4j</groupId>
+			<artifactId>slf4j-log4j12</artifactId>
+			<version>${slf4j.version}</version>
+		</dependency>
+	</dependencies>
+</project>
